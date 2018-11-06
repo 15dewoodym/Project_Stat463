@@ -125,7 +125,7 @@ prediction = list(mobile = mobile_object, desktop = desktop_object,
 
 group = 1 # insert group number
 from = "psu.forecasting.group.1@gmail.com" # insert group gmail address
-key = "aaaaaaaaaaaaaaa" # insert group unique key
+key = "sKCFrcrnXk6623L" # insert group unique key
 credential_OK = check_credentials(group = group, from = from, key = key)
 
 # Check prediction object
@@ -134,7 +134,7 @@ prediction_OK = check_prediction(prediction = prediction)
 
 
 group = 1 #group number
-to = "madewoody@gmail.com" # email address that will receive the forecasts
+to = "psu.forecasting.instructors@gmail.com" # email address that will receive the forecasts
 from = "psu.forecasting.group.1@gmail.com" # example gmail address used by group number X to send their forecasts
 key_group = "sKCFrcrnXk6623L" # example of unique key identifier for the group
 date = Sys.Date() # time at which the forecast is sent
