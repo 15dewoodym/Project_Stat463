@@ -15,13 +15,13 @@ send_prediction = function(group, prediction, to, from, key, date = Sys.Date()){
 }
 
 
-wiki_mobile = project_pageviews(platform = "mobile-app", granularity = "daily", start = "2017110600", end = "2018110600")
-wiki_desktop = project_pageviews(platform = "desktop", granularity = "daily", start = "2018050600", end = "2018110600")
-wiki_silvio <- article_pageviews(article = "Silvio_Berlusconi", start = "2018090600", end = "2018110600")
-wiki_beyonce <- article_pageviews(article = "Beyonce", start = "2018080600", end = "2018110600")
-wiki_chomsky <- article_pageviews(article = "Noam_Chomsky", start = "2018090600", end = "2018110600")
-wiki_lazio <- article_pageviews(article = "SS_Lazio", start = "2018050100", end = "2018110600")
-wiki_thanks <- article_pageviews(article = "Thanksgiving", start = "2015010100", end = "2018110600")
+wiki_mobile = project_pageviews(platform = "mobile-app", granularity = "daily", start = "2017110600", end = "2018110700")
+wiki_desktop = project_pageviews(platform = "desktop", granularity = "daily", start = "2018050600", end = "2018110700")
+wiki_silvio <- article_pageviews(article = "Silvio_Berlusconi", start = "2018090600", end = "2018110700")
+wiki_beyonce <- article_pageviews(article = "Beyonce", start = "2018080600", end = "2018110700")
+wiki_chomsky <- article_pageviews(article = "Noam_Chomsky", start = "2018090600", end = "2018110700")
+wiki_lazio <- article_pageviews(article = "SS_Lazio", start = "2018050100", end = "2018110700")
+wiki_thanks <- article_pageviews(article = "Thanksgiving", start = "2015010100", end = "2018110700")
 
 #MobileViews:
 
@@ -144,4 +144,4 @@ send_prediction(group = group, prediction = prediction, to = to, from = from,
                 key = key_group, date = date)
 
 
-
+#psu.forecasting.instructors@gmail.com
