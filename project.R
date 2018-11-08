@@ -25,7 +25,8 @@ wiki_thanks <- article_pageviews(article = "Thanksgiving", start = "2015010100",
 
 #MobileViews:
 
-wiki_mobile = project_pageviews(platform = "mobile-app", granularity = "daily", start = "2017110600", end = "2018110600")
+#change both dates by 1 day
+wiki_mobile = project_pageviews(platform = "mobile-app", granularity = "daily", start = "2017110700", end = "2018110800")
 
 Mt = gts(wiki_mobile$views)
 plot(Mt)
@@ -70,12 +71,13 @@ silvio_object = list(silvio_pred = as.numeric(silvio_forecast$pred),
 
 #BeyonceViews:
 
-wiki_beyonce <- article_pageviews(article = "Beyonce", start = "2018080600", end = "2018110600")
+#changed St to bt in modB
+wiki_beyonce <- article_pageviews(article = "Beyonce", start = "2018080800", end = "2018110800")
 
 Bt = gts(wiki_beyonce$views)
 plot(Bt)
 plot(auto_corr(Bt,pacf=TRUE))
-modB = estimate(AR(9),St)
+modB = estimate(AR(18),Bt)
 check(modB)
 predict(modB, n.ahead = 30)
 
@@ -115,7 +117,8 @@ lazio_object = list(lazio_pred = as.numeric(lazio_forecast$pred),
 
 #ThanksViews:
 
-wiki_thanks <- article_pageviews(article = "Thanksgiving", start = "2015010100", end = "2018110600")
+#edit both dates by one every day
+wiki_thanks <- article_pageviews(article = "Thanksgiving", start = "2015070300", end = "2018110800")
 
 Tt = gts(wiki_thanks$views)
 Tt = gts(Tt[c(80:150,445:515,810:880,1175:1224),])
