@@ -15,15 +15,17 @@ send_prediction = function(group, prediction, to, from, key, date = Sys.Date()){
 }
 
 
-wiki_mobile = project_pageviews(platform = "mobile-app", granularity = "daily", start = "2017110600", end = "2018110700")
-wiki_desktop = project_pageviews(platform = "desktop", granularity = "daily", start = "2018050600", end = "2018110700")
-wiki_silvio <- article_pageviews(article = "Silvio_Berlusconi", start = "2018090600", end = "2018110700")
-wiki_beyonce <- article_pageviews(article = "Beyonce", start = "2018080600", end = "2018110700")
-wiki_chomsky <- article_pageviews(article = "Noam_Chomsky", start = "2018090600", end = "2018110700")
-wiki_lazio <- article_pageviews(article = "SS_Lazio", start = "2018050100", end = "2018110700")
-wiki_thanks <- article_pageviews(article = "Thanksgiving", start = "2015010100", end = "2018110700")
+wiki_mobile = project_pageviews(platform = "mobile-app", granularity = "daily", start = "2017110600", end = "2018110600")
+wiki_desktop = project_pageviews(platform = "desktop", granularity = "daily", start = "2018050600", end = "2018110600")
+wiki_silvio <- article_pageviews(article = "Silvio_Berlusconi", start = "2018090600", end = "2018110600")
+wiki_beyonce <- article_pageviews(article = "Beyonce", start = "2018080600", end = "2018110600")
+wiki_chomsky <- article_pageviews(article = "Noam_Chomsky", start = "2018090600", end = "2018110600")
+wiki_lazio <- article_pageviews(article = "SS_Lazio", start = "2018050100", end = "2018110600")
+wiki_thanks <- article_pageviews(article = "Thanksgiving", start = "2015010100", end = "2018110600")
 
 #MobileViews:
+
+wiki_mobile = project_pageviews(platform = "mobile-app", granularity = "daily", start = "2017110600", end = "2018110600")
 
 Mt = gts(wiki_mobile$views)
 plot(Mt)
@@ -37,6 +39,8 @@ mobile_object = list(mobile_pred = as.numeric(mobile_forecast$pred),
 
 #DesktopViews:
 
+wiki_desktop = project_pageviews(platform = "desktop", granularity = "daily", start = "2018050600", end = "2018110600")
+
 Dt = gts(wiki_desktop$views)
 plot(Dt)
 modD = estimate(SARIMA(ar = 1, i = 0, ma = 1, sar = 2, si = 0, sma = 1, s = 7), Dt, method = "rgmwm")
@@ -49,6 +53,8 @@ desktop_object = list(desktop_pred = as.numeric(desktop_forecast$pred),
 
 #SilvioViews:
 
+
+wiki_silvio <- article_pageviews(article = "Silvio_Berlusconi", start = "2018090600", end = "2018110600")
 St = gts(wiki_silvio$views)
 plot(St)
 plot(auto_corr(St,pacf=TRUE))
@@ -64,6 +70,8 @@ silvio_object = list(silvio_pred = as.numeric(silvio_forecast$pred),
 
 #BeyonceViews:
 
+wiki_beyonce <- article_pageviews(article = "Beyonce", start = "2018080600", end = "2018110600")
+
 Bt = gts(wiki_beyonce$views)
 plot(Bt)
 plot(auto_corr(Bt,pacf=TRUE))
@@ -76,6 +84,8 @@ beyonce_object = list(beyonce_pred = as.numeric(beyonce_forecast$pred),
                       beyonce_ci = as.numeric(beyonce_forecast$CI0.95))
 
 #ChomskyViews:
+
+wiki_chomsky <- article_pageviews(article = "Noam_Chomsky", start = "2018090600", end = "2018110600")
 
 Ct = gts(wiki_chomsky$views)
 plot(Ct)
@@ -90,6 +100,8 @@ chomsky_object = list(chomsky_pred = as.numeric(chomsky_forecast$pred),
 
 #LazioViews:
 
+wiki_lazio <- article_pageviews(article = "SS_Lazio", start = "2018050100", end = "2018110600")
+
 Lt = gts(wiki_lazio$views)
 plot(Lt)
 plot(auto_corr(Lt))
@@ -102,6 +114,8 @@ lazio_object = list(lazio_pred = as.numeric(lazio_forecast$pred),
                     lazio_ci = as.numeric(lazio_forecast$CI0.95))
 
 #ThanksViews:
+
+wiki_thanks <- article_pageviews(article = "Thanksgiving", start = "2015010100", end = "2018110600")
 
 Tt = gts(wiki_thanks$views)
 Tt = gts(Tt[c(80:150,445:515,810:880,1175:1224),])
