@@ -14,19 +14,10 @@ send_prediction = function(group, prediction, to, from, key, date = Sys.Date()){
     body = paste(key, date, paste(unlist(prediction), collapse = ","), sep = ";")))
 }
 
-
-wiki_mobile = project_pageviews(platform = "mobile-app", granularity = "daily", start = "2017110600", end = "2018110600")
-wiki_desktop = project_pageviews(platform = "desktop", granularity = "daily", start = "2018050600", end = "2018110600")
-wiki_silvio <- article_pageviews(article = "Silvio_Berlusconi", start = "2018090600", end = "2018110600")
-wiki_beyonce <- article_pageviews(article = "Beyonce", start = "2018080600", end = "2018110600")
-wiki_chomsky <- article_pageviews(article = "Noam_Chomsky", start = "2018090600", end = "2018110600")
-wiki_lazio <- article_pageviews(article = "SS_Lazio", start = "2018050100", end = "2018110600")
-wiki_thanks <- article_pageviews(article = "Thanksgiving", start = "2015010100", end = "2018110600")
-
 #MobileViews:
 
 #change both dates by 1 day
-wiki_mobile = project_pageviews(platform = "mobile-app", granularity = "daily", start = "2017110700", end = "2018110800")
+wiki_mobile = project_pageviews(platform = "mobile-app", granularity = "daily", start = "2017111000", end = "2018110800")
 
 Mt = gts(wiki_mobile$views)
 plot(Mt)
@@ -40,7 +31,7 @@ mobile_object = list(mobile_pred = as.numeric(mobile_forecast$pred),
 
 #DesktopViews:
 
-wiki_desktop = project_pageviews(platform = "desktop", granularity = "daily", start = "2018050600", end = "2018110600")
+wiki_desktop = project_pageviews(platform = "desktop", granularity = "daily", start = "2018050600", end = "2018110800")
 
 Dt = gts(wiki_desktop$views)
 plot(Dt)
@@ -48,14 +39,14 @@ modD = estimate(SARIMA(ar = 1, i = 0, ma = 1, sar = 2, si = 0, sma = 1, s = 7), 
 check(modD)
 predict(modD, n.ahead = 30)
 
-desktop_forecast <- predict(modD, n.ahead = 1, level = 0.95)
+desktop_forecast <- predict(modD, n.ahead = 30, level = 0.95)
 desktop_object = list(desktop_pred = as.numeric(desktop_forecast$pred), 
                      desktop_ci = as.numeric(desktop_forecast$CI0.95))
 
 #SilvioViews:
 
 
-wiki_silvio <- article_pageviews(article = "Silvio_Berlusconi", start = "2018090600", end = "2018110600")
+wiki_silvio <- article_pageviews(article = "Silvio_Berlusconi", start = "2018110700", end = "2018110800")
 St = gts(wiki_silvio$views)
 plot(St)
 plot(auto_corr(St,pacf=TRUE))
@@ -87,7 +78,7 @@ beyonce_object = list(beyonce_pred = as.numeric(beyonce_forecast$pred),
 
 #ChomskyViews:
 
-wiki_chomsky <- article_pageviews(article = "Noam_Chomsky", start = "2018090600", end = "2018110600")
+wiki_chomsky <- article_pageviews(article = "Noam_Chomsky", start = "2018090600", end = "2018110800")
 
 Ct = gts(wiki_chomsky$views)
 plot(Ct)
@@ -102,7 +93,7 @@ chomsky_object = list(chomsky_pred = as.numeric(chomsky_forecast$pred),
 
 #LazioViews:
 
-wiki_lazio <- article_pageviews(article = "SS_Lazio", start = "2018050100", end = "2018110600")
+wiki_lazio <- article_pageviews(article = "SS_Lazio", start = "2018050100", end = "2018110800")
 
 Lt = gts(wiki_lazio$views)
 plot(Lt)
