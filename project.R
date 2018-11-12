@@ -59,6 +59,7 @@ predict(modS, n.ahead = 30)
 silvio_forecast = predict(modS, n.ahead = 1, level = 0.95)
 silvio_object = list(silvio_pred = as.numeric(silvio_forecast$pred), 
                      silvio_ci = as.numeric(silvio_forecast$CI0.95))
+silvio_object$silvio_ci[1]=max(0, silvio_object$silvio_ci[1])
 
 
 #BeyonceViews:
@@ -76,6 +77,7 @@ predict(modB, n.ahead = 30)
 beyonce_forecast = predict(modB, n.ahead = 1, level = 0.95)
 beyonce_object = list(beyonce_pred = as.numeric(beyonce_forecast$pred), 
                       beyonce_ci = as.numeric(beyonce_forecast$CI0.95))
+beyonce_object$beyonce_ci[1]=max(0, beyonce_object$beyonce_ci[1])
 
 #ChomskyViews:
 
@@ -124,6 +126,7 @@ predict(modT, n.ahead = 30)
 thanks_forecast= predict(modT, n.ahead = 1, level = 0.95)
 thanks_object = list(thanks_pred = as.numeric(thanks_forecast$pred), 
                      thanks_ci = as.numeric(thanks_forecast$CI0.95))
+thanks_object$thanks_ci[1]=max(0, thanks_object$thanks_ci[1])
 
 
 prediction = list(mobile = mobile_object, desktop = desktop_object, 
